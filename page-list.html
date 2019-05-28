@@ -1,0 +1,136 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .info::selection{
+            background: transparent;
+        }
+        .info {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 300px;
+            color: gray;
+            max-lines: 1;
+        }
+        .info br{
+            display: none;
+        }
+        .info ul{
+            display: none;
+        }
+        .info::before {
+            content: "+";
+            width: 15px;
+            display: inline-block;
+            padding-left: 5px;
+        }
+        .info.opened {
+            white-space: normal;
+            width: auto;
+            color: black;
+            max-lines: auto;
+        }
+        .info.opened br{
+            display: inline;            
+        }
+        .info.opened ul{
+            display:list-item;
+        }
+        .info.opened::before{
+            content: "-";
+            width: 15px;
+            display: inline-block;
+            padding-left: 5px;
+        }
+    </style>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $(".info").on('click', (event)=>{
+            $(event.target).toggleClass("opened");});  
+        })
+    </script>
+</head>
+<body>
+    <h3>Welcome</h3>
+    <ul>
+        <li>/login/login</li>
+        <li>/collections/get-best</li>
+    </ul>
+    <h3>Профиль: настройки</h3>
+    <ul>
+        <li>/profile/save-avatar</li>
+        <div class="info">Сохранение аватара.<br>передаётся картинка произвольного размера</div>
+        <li>/profile/change-password</li>
+        <li>/profile/company-info-save</li>
+        <li>/profile/company-info-load</li>
+        <li>/profile/rent-restricts-save</li>
+        <li>/profile/rent-restricts-load</li>
+        <li>/profile/work-time-save</li>
+        <li>/profile/work-time-load</li>
+        <li>/profile/alerts-save</li>
+        <li>/profile/alerts-load</li>
+        <li>/profile/get-profile-data</li>
+    </ul>
+    <h3>Профиль: мой декор</h3>
+    <ul>
+        <li>/units/add-new-unit</li>
+        <div class="info">Список параметров:
+            <ul>
+                <li>5 фотографий: photo1.*, photo2.*, photo3.*, photot4.*, photo5.*</li>
+                <li>Вес, кг: weight</li>
+                <li>Залог, руб: bail</li>
+                <li>Количество, шт: count</li>
+                <li>Коллекция: set-id</li>
+                <li>Название: title</li>
+                <li>Первый день: first-day-cost</li>
+                <li>Аренда от, дней: rent-min-days</li>
+                <li>Аренда р/сут: day-cost</li>
+                <li>Тип товара: unit-type</li>
+                <li>Массив id цветов: unit-colors</li>
+                <li>id группы: goupid</li>
+                <li>список параметров: [{"id":id1, "value": val1}, {"id":id2, "value": val2}]</li>
+            </ul>
+        </div>
+        <div class="info">Возможные ответы:
+            <ul>
+                <li>OK</li>
+                <li>Текст ошибки</li>
+            </ul>
+        </div>
+        <li>/units/get-groups</li>
+        <div class="info">Параметр: 
+            <ul>
+                <li>parentid: id группы - родителя</li>
+            </ul>
+        </div>
+        <div class="info">Ответ:
+            <ul>
+                <li>json строка, содержащая массив групп. [{"id": 1, "name": "группа №1"}, {"id": 3, "name": "группа X"}]</li>
+                <li>Если нет групп с указанным родителем - возвращается пустой массив ("[]")</li>
+            </ul>
+        </div>
+        <li>/units/get-group-parameters</li>
+        <div class="info"> Параметр:
+            <ul>
+                <li>groupid: id группы, для которой нужны параметры</li>
+            </ul>
+        </div>
+        <div class="info">Ответ:
+            <ul>
+                <li>json массив с параметрами и картинкой: {"picture": "/static/img/imago.jpeh", "parameters": [{"id": id1, "name": имя, "dimension": размерность}, {"id": id2, "name": имя, "dimension": ''}]}</li>
+                <li>если размерность отсутствует - dimension - пустая строка</li>
+            </ul>
+        </div>
+        <li>/units/get-my-units</li>
+        <div class="info">Параметры:
+            <ul>
+                <li>offset: смещение от начала</li>
+                <li>size: максимальное количество элементов</li>
+                <li>filter: поисковая строка. Пустая строка при отсутствии поиска.</li>
+            </ul>
+        </div>
+    </ul>
+</body>
+</html>
