@@ -48,3 +48,12 @@
 	"description": unit1.description,
 	"published": unit1.published
 }
+
+/account/save-avatar (POST)
+	Сохранить новую аватарку
+	_____
+	avatar170: png file - содержание аватарки 170x170
+	avatar71: png file - содержание аватарки 71x71
+	#####
+	200 - сохранение прошло успешно
+	500 - ошибка при сохранении аватара. Текст ошибки - в responseText
