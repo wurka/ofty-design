@@ -1,0 +1,11 @@
+unit-id must be integer
+    ошибка при добавлении товара в корзину
+
+unit not found
+    странно, но товар не найден в базе или недоступен для аренды
+
+unit already in basket
+    товар уже в корзине
+
+unit not in basket
+    товара нет в корзине
