@@ -24,6 +24,9 @@
 	/unit-storage
 	(unit-storage.js)
 		Мой склад (мои вещи)
+
+/office
+    /basket
 		
 /office
 	/shop
@@ -42,3 +45,5 @@
 /unit-search
 	unit-search.js
 	Страница для поиска товаров
+
+
